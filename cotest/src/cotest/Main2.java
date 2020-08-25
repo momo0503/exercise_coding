@@ -29,5 +29,6 @@ public static void main(String[] args) throws Exception{
 	sc.close();
 	System.out.println("rkskekfk");
 	System.out.println("rkskekfk");
+	System.out.println("fetch 후 코드 수정후 push 해보기");
 }
 }
