@@ -1,0 +1,28 @@
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Main {
+
+   public static void main(String[] args) {
+   
+      Stack stack = new Stack();
+	  Scanner sc = new Scanner(System.in);
+      int num = sc.nextInt();
+  
+      for(int i=0; i<num; i++) {
+    	  String ct = sc.next();
+    	  if(ct.contains("push")) {
+    		int ct2 = sc.nextInt();
+    		stack.push(ct2);
+    	  }else if(ct.equals("pop")){
+    		 System.out.println(stack.isEmpty()?-1:stack.pop());
+    	  }else if(ct.equals("size")) {
+    		  System.out.println(stack.size());
+    	  }else if(ct.equals("empty")) {
+    		 System.out.println(stack.isEmpty()?1:0);
+    	  }else if(ct.equals("top")) {
+    		System.out.println(stack.isEmpty()?-1:stack.peek());
+    	  }
+      }
+   }
+}
