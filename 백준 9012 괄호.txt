@@ -59,7 +59,7 @@ boolean result=true;
 
 for(int j=0;j<input.length();j++){
 if(input.charAt(j) =='('){
-stack.push(val.charAt(j));
+stack.push(input.charAt(j));
 }else if(input.charAt(j)==')'){
  if(!stack.empty()){
 stack.pop();
