@@ -1,0 +1,29 @@
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+     
+        int totalP=0;
+        int sum=0;
+        Scanner sc = new Scanner(System.in);
+        int n =sc.nextInt();
+        int[] arr = new int[n];
+        
+        //배열에 pi값 입력하기
+        for(int i=0;i<n;i++){
+            int pi = sc.nextInt();
+            arr[i] =pi;
+        }
+        
+        //오름차순 정렬
+       Arrays.sort(arr);
+        
+        //totalP 구하기
+        for(int i=0;i<n;i++){
+            sum= sum+arr[i];
+            totalP=totalP+sum;
+        }
+     
+        System.out.println(totalP);
+    }
+}
