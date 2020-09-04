@@ -1,0 +1,35 @@
+import java.io.*;
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        
+        StringTokenizer token = new StringTokenizer(br.readLine());
+        int n = Integer.parseInt(token.nextToken());
+        int k = Integer.parseInt(token.nextToken());
+        int[] arr = new int[n];
+        int minValue=0;
+        
+        //N의 값들 입력하기
+        for(int i=0;i<n;i++){
+            arr[i]=Integer.parseInt(br.readLine());
+        }
+        
+        //최소값 구하기
+        
+        for(int j=n-1;j>=0;j--){
+          if(k>=arr[j]){
+             minValue += k/arr[j];
+              k=k%arr[j];
+           }
+ 
+        }//for
+        
+        bw.write(String.valueOf(minValue));
+        br.close();
+        bw.close();
+       
+    }//main()
+}
