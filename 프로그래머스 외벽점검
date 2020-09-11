@@ -1,0 +1,85 @@
+import java.util.ArrayList;
+
+class Solution {
+    ArrayList<int[]> friends;
+    
+    public int solution(int n, int[] weak, int[] dist) {
+        int answer = -1;
+        int[] expand_weak = new int[weak.length *2 -1];
+        
+        //1.취약점 배열 확장
+        for(int i=0; i<expand_weak.length; i++){
+            expand_weak[i] = (i<weak.length)? weak[i] : weak[i%weak.length] + n;  
+        }
+        
+        for(int i=1; i<=dist.length; i++){
+            //2.출전 친구 구하기
+            friends = new ArrayList<>();  
+            permutation(dist, 0, i);
+            
+            //3.해당 친구로 취약점 검사
+            for(int j=0; j<friends.size(); j++){
+                if(check(expand_weak, friends.get(j))){
+                    answer = friends.get(j).length;
+                    break;
+                }
+            }             
+            
+            if(answer != -1) break;
+        }
+        
+        return answer;
+    }
+    
+    
+    boolean check(int[] weak, int[] friend){
+        int len = weak.length/2 +1;    
+        
+        for(int i=0; i<len; i++){
+            int idx = 0;
+            int startPoint = weak[i];
+            boolean flag = true;
+            
+            for(int j=i; j<i+len; j++){   
+                //탐색 실패
+                if(weak[j] - startPoint > friend[idx]){
+                    startPoint = weak[j];
+                    idx ++;
+                    
+                    if(idx == friend.length){
+                        flag = false;
+                        break;
+                    }
+                }
+            }
+            
+            if(flag) return true;
+        }
+        
+        return false;
+    }
+    
+    void permutation(int[] arr, int depth, int r) { 
+        if (depth == r) {
+            int[] tmp = new int[r];
+            
+            for(int i=0; i<r; i++){
+                tmp[i] = arr[i];
+            }     
+            
+            friends.add(tmp);
+        }
+
+        for (int i = depth; i < arr.length; i++) {
+            swap(arr, depth, i);
+            permutation(arr, depth + 1, r);
+            swap(arr, depth, i);
+        }
+    }
+    
+    void swap(int[] arr, int a, int b){
+        int temp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
+    }
+}
