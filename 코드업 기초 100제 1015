@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        
+        float f = sc.nextFloat();
+        //소숫점 셋 째자리에서 반올림하여 소숫점 둘째 자리까지 출력하기 (%.2f)
+        String str = String.format("%.2f", f);
+        System.out.print(str);
+    }
+}
+=================================================
+소수점 3쨰자리에서 반올림 
+format() 이용
+
+Formatter 클래스 자체를 사용하는 것은 편리하지만 형식화된 출력을 위해서 매번 Formatter를 생성하는 것은 불편하다.
+그래서 String 클래스와 PrintStream , PrintWriter 클래스에서는 format() 메소드를 제공하여 Formatter의 기능을 대신할 수 있다.
+
+String s = String.format() 
+String user = "하이언";
+        int i = 10;
+       
+        String sf = String.format("%s님 %d번째 방문", user, i);
+       
+        System.out.println(sf);
