@@ -1,0 +1,13 @@
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		float a = scan.nextFloat();
+		System.out.printf("%f" ,a);
+	}
+
+===================================================================== 
+
+		System.out.println(a); 으로 바꾸면 에러뜸.
