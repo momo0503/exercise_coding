@@ -1,0 +1,21 @@
+import java.util.*;
+
+public class Main{
+
+public static void main(String[] args){
+
+ Scanner sc= new Scanner(System.in);
+  
+  String code = sc.nextLine();
+  sc.close();
+  
+    StringTokenizer st = new StringTokenizer(code,"-");
+    String n1 = st.nextToken();
+    String n2 = st.nextToken();
+    System.out.println(n1+n2);
+  
+}
+}
+==============================
+입력예시 : 000907-1121112
+출력 예시 :0009071121112
