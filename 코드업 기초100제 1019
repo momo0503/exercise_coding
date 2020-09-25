@@ -1,0 +1,39 @@
+import java.util.Scanner;
+import java.util.StringTokenizer;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		
+		String date = scan.nextLine();
+		scan.close();
+		StringTokenizer stn = new StringTokenizer(date, "."); //date를 .일 기준으로 토큰화 
+		
+		String[] ans = new String[3];
+		String  tk ;
+		for(int i =0; i<3; i++) {
+			tk = stn.nextToken();
+			ans[i] = tk;  //배열에 토큰 하나하나씩 담는다.
+		}
+		int ymd1 = Integer.parseInt(ans[0]);
+		int ymd2 = Integer.parseInt(ans[1]);
+		int ymd3 = Integer.parseInt(ans[2]);
+		
+		
+		System.out.printf("%04d.%02d.%02d",ymd1,ymd2,ymd3);
+	}
+
+}
+========================================================
+입력 예  : 2013.8.5
+출력 예 : 2013.08.05
+
+입력받은 연,월,일을 yyyy.mm.dd 형식으로 출력하는것인데
+%02d를 사용하면 2칸을 출력하는데, 한 자리 수인 경우 앞에 0을붙여 출력한다.
+%04d 는 4칸을 출력 
+
+printf에서 f는 formatted(서식화된)의 약자이다.
+%f 는 실수 데이터 
+%s 는 문자열 데이터
+%c 는 문자 데이터
