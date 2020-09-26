@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); // 입력
+		String word = sc.nextLine(); // 입력값을 Str word변수에저장
+		String[] array = new String[word.length()]; // 입력받은 문자열의길이만큼에 배열을 생성
+
+		array=word.split(""); // 문자열을 한글자씩 분리후 배열에 담는다.
+
+		for (int i = 0; i < word.length(); i++)
+		    System.out.println("'"+array[i]+"'");
+
+	}
+}
+=======================================================
+입력 예 : BOY 
+출력 예 : 
+'B'
+'O'
+'Y' 
+
+array=word.split(""); // word를 한글자씩 분리해서 배열에 담는다. "" 안에 기준을 , - 등으로 변환하여 배열안에 분리해서 저장할 수 있다.
