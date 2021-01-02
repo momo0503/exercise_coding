@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String args[]){
+     
+     Scanner sc = new Scanner(System.in);
+     int input =sc.nextInt(); 
+     int input2 =sc.nextInt();
+     int input3 =sc.nextInt(); 
+     int min=1;
+     
+     while(min%input!=0||min%input2!=0||min%input3!=0){
+         min++; 
+         
+     }
+     
+     sc.close();   
+     System.out.println(min);
+    }
+}
+//최소공배수를 구해 출력하기 
