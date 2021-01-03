@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class Main {
+ 
+  public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int[][] arr = new int[19][19];
+      
+        //2차원배열 입력
+          for (int i=0;i<arr.length;i++) {
+            for (int j=0;j<arr.length;j++) {
+                arr[i][j] = sc.nextInt();
+            }
+        }
+        
+          int n = sc.nextInt();     int x=0; int y=0;
+         
+         //뒤집기 
+        for(int i=0;i<n;i++){
+            x= sc.nextInt();
+           
+            for(int j=0;j<19;j++){
+            if(arr[x-1][j]==1) arr[x-1][j]=0;    
+            else if(arr[x-1][j]==0) arr[x-1][j]=1;     
+            }
+        
+             y= sc.nextInt();
+             
+            for(int k=0;k<19;k++){
+                if(arr[k][y-1] ==1) arr[k][y-1]=0;
+                else if(arr[k][y-1]==0) arr[k][y-1]=1;
+            }
+            
+    }// outter for
+        
+        //출력
+        for(int i=0; i<19;i++){
+            for(int j=0; j<19;j++){
+                System.out.print(arr[i][j]+" ");
+            }
+            System.out.println();
+        }
+      
+    }
+}
+
