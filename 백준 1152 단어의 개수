@@ -1,0 +1,18 @@
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String input = sc.nextLine(); //문자열 입력 
+        
+        
+        StringTokenizer st = new StringTokenizer(input," ");
+        
+        System.out.print(st.countTokens());
+        
+        sc.close();
+        
+        
+        
+    }
+}
