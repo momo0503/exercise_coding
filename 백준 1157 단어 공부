@@ -1,0 +1,47 @@
+import java.util.*;
+
+public class Result {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		String input = sc.nextLine();
+		
+		String input2 = input.toUpperCase();
+		
+		int[] arr = new int[26];
+		int max =0;
+		char result = '?';
+		
+		for(int i = 0;i<input2.length();i++) {
+			
+			arr[input2.charAt(i)-65]++;
+			
+		}//for , 
+		
+		
+		for(int i =0 ; i<arr.length;i++) {
+			if(max<arr[i]) {
+				max = arr[i];
+				result = (char) (i+65);
+			}else if(max == arr[i]){
+				result ='?';
+			}
+		}
+		
+		System.out.print(result);
+		
+//		System.out.println(input2);
+//
+//		for(int i =0;i<arr.length;i++) {
+//		System.out.print(arr[i]);
+//		}
+		
+		
+	}//main()
+
+}//class
+
+//String 자르기 - > charAt , split
+// 배열인덱스 0~25  , charAt(i) 의 값은 65~90  A 인경우 -65 해주면 0번인덱스에 Z인경우 -65해주면 25번인덱스에
+//아스키 코드 A~Z : 65~90  a~z : 97~122
