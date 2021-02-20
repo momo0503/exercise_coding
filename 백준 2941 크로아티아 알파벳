@@ -1,0 +1,100 @@
+/*
+ * 크로아티아 알파벳  
+ * date : 2021.02.16
+ * id : momo
+  */
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class BaekJoon2941 {
+
+	public static void main(String[] args) throws IOException{
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		String input = br.readLine();
+		
+		int length = input.length(); // 변경 입력된 문자 수
+		int count = 0; //크로아티아 문자수 
+		
+		char[] arr = new char[length];
+		
+		for(int i =0;i<length;i++) {
+			arr[i]= input.charAt(i);
+			
+		}//배열아 문자 한개씩 입력 
+		
+		//비교해서 count++
+		
+		for(int i = 0;i<length;i++) {
+			
+		 	if(arr[i]=='c') {
+		 		if(i+1<length) {
+			 	if(arr[i+1]=='=' ||arr[i+1]=='-') {
+					i++;
+					
+				}
+		 	}	
+		 }
+		 	
+		 else if(arr[i]=='d') {
+		 	if(i+1<length) {
+		 		if(arr[i+1]=='z') {
+		 			if(i+2<length) {
+		 				if(arr[i+2]=='=') {
+		 					i+=2;
+		 				}
+		 			}
+		 		}
+		 	
+					
+		 	else if(arr[i+1]=='-') {
+		 		i++;
+		 	}
+		 }
+		} 
+				 
+		 	else if(arr[i]=='l'||arr[i]=='n') {
+		 		if(i+1<length) {
+						if(arr[i+1]=='j') {
+							i++;
+							
+						}
+								
+					}
+		 	}	
+					
+		 	else if(arr[i]=='s') {
+		 		if(i+1<length) {
+						if(arr[i+1]=='=') {
+							i++;
+							
+							
+						}
+					}
+		 	}	
+					
+		 	else if(arr[i]=='z') {
+		 		if(i+1<length) {
+						if(arr[i+1]=='=') {
+							i++;
+							
+							
+						}
+					}
+		 	}
+					count++;
+			} //for
+			
+			
+			
+		
+		System.out.print(count);
+		
+		
+	}
+}
+//입력받은 문자열을 잘라서 하나 씩 검사한 다음에 count를 ++한다.
+//목록에 없는 알파벳은 한글자씩 센다. 
