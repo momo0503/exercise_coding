@@ -1,0 +1,55 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.Arrays;
+import java.util.Comparator;
+
+public class Main {
+
+	public static void main(String[] args) throws IOException{
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		
+		int N = Integer.parseInt(br.readLine());
+		String[] arr = new String[N];
+		
+		for(int i = 0; i<N; i++) {
+			String input = br.readLine();
+		    arr[i] = input;
+		    
+		}
+		
+	
+		Arrays.sort(arr , new Comparator<String>() {
+			
+			@Override
+			public int compare(String a, String b) {
+				if(a.length()==b.length()) { //단어의 길이가 같으면  입력받은 a,b를 비교하여 정렬한다. 
+					return a.compareTo(b); //a를 b와 비교하여  음수 or 0 이면 그대로  양수면 자리를 바꾼다.
+				}else {
+					return a.length()-b.length(); //길이가 같지 않으면 길이 a와 b의 길이를 비교하여 a-b가 양수면 자리바꿈, 음수면 그대로 	
+				}
+			}
+			
+		});
+		
+
+		bw.write(arr[0]+"\n");
+		
+		for(int i=1; i<N; i++) {
+			if (!arr[i].equals(arr[i - 1])) {
+				bw.write(arr[i]+"\n");
+			} 
+		
+		}
+		
+		bw.close();    
+		
+}//main()
+
+}
+
+//첫번째 기준 단어의 길이 , 두번째 기준 사전순 
