@@ -1,0 +1,41 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Stack;
+
+public class BackJoon100773 {
+
+	public static void main(String[] args) throws IOException{
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		Stack<Integer> stack = new Stack<>();
+		
+		int N = Integer.parseInt(br.readLine());
+		int sum = 0;
+		
+		for(int i =0;i<N;i++) {
+			int num = Integer.parseInt(br.readLine());
+			
+			if(num == 0) {
+				stack.pop();
+			}else {
+				stack.push(num);
+			}
+	
+		}
+		
+	
+		while(!stack.empty()) {
+			sum+=stack.pop();
+		}
+		//스택의 값 더할시 향상된 for문 써도됨.
+		System.out.println(sum);
+		
+	}//main()
+
+}
+
+
+//push(value) : 스택에 추가 , pop() :스택 가장 위의 값 삭제  clear() : 스택 완전 제거  , peek() : 스택 상단값 출력,   size() : 크기 출력 , 
+//empty() 비어있는지 boolean 형태 반환 , contains(value) : 스택에 value 있는지 확인 있으면 true 
+
