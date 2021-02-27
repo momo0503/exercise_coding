@@ -1,0 +1,26 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.*;
+
+public class BaekJoon10808 {
+	public static void main(String[] args) throws IOException{
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String input = br.readLine();
+		
+		int[] arr = new int[26];
+		
+		for(int i=0;i<input.length();i++) {
+			arr[input.charAt(i)-97]++;
+		}
+		
+		for(int i=0;i<26;i++) {
+			System.out.print(arr[i]+" ");
+		}
+			
+		
+		
+	}
+}
+
+// A~Z 65~90 , a~z 97~122 
