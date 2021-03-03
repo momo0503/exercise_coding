@@ -1,0 +1,33 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+
+public class BackJoon1100 {
+
+	public static void main(String[] args) throws IOException{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		char[][] arr = new char[8][8];
+		int count=0;
+		
+		//(0,0) 하얀칸 (7,7)까지 있음  0,1 검 0,2 흰 ..... 1,0 검 1,1 흰 ...  2,0 흰 ,2,1 검 , 2,2흰 .....
+		for(int i=0;i<8;i++) {
+			String input = br.readLine();
+			for(int j=0;j<8;j++) {
+				
+				if(i%2 == 0 && j%2==0) {
+					if(input.charAt(j)=='F') count++;
+					
+				}else if(i%2 == 1 && j%2 == 1) {
+					if(input.charAt(j)=='F') count++;
+					
+				}				
+			}
+
+		}
+
+		System.out.print(count);
+	
+	}
+
+}
