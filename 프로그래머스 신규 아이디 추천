@@ -1,0 +1,78 @@
+
+
+class Solution {
+    public String solution(String new_id) {
+        String answer = "";
+      
+        //1
+		String id_temp = new_id.toLowerCase();
+        String id = "";
+		
+        //2
+		for(int i=0; i<new_id.length(); i++) {
+			char temp = id_temp.charAt(i);
+
+			if(temp >= 'a' && temp <= 'z') {
+				id += String.valueOf(temp);
+			} else if(temp >= '0' && temp <= '9') {
+				id += String.valueOf(temp);
+			} else if(temp == '.' || temp == '-' || temp == '_') {
+				id += String.valueOf(temp);
+			}
+		}
+        
+       //3
+        for(int i=id.length()-1;i>=1;i--){
+            if(id.charAt(i)=='.' && id.charAt(i-1)=='.'){
+                String temp = id.substring(0,i-1);
+                String temp2 = id.substring(i,id.length());
+                id= temp+temp2;
+            } 
+        }
+
+        //4 
+        if(id.length()>0 && id.charAt(0)=='.'){
+            id=id.substring(1,id.length());
+        }
+        
+        //여기서 id.length()>0 해주지 않으면 StringIndexOutOfBoundsException 발생한다. 
+        //원인 : id크기가 1인경우 id.length()-1 은 크기가 없어짐.. 
+        //id.length()의 길이를 체크하는 코드를 추가해야한다.
+
+        if(id.length()>0 && id.charAt(id.length()-1)=='.'){
+            id = id.substring(0,id.length()-1);
+        }
+        
+        //5
+        if(id.equals("")){
+            id+='a';
+        }
+            
+        //6
+        boolean flag =true;
+        if(id.length()>=16){
+            id=id.substring(0,15);
+              while(flag){  
+                  
+            if(id.charAt(id.length()-1)=='.'){
+                    id=id.substring(0,id.length()-1); 
+            }else{
+                break;
+            }
+                  
+         }       
+            
+    }
+        
+        //7
+        String last = String.valueOf(id.charAt(id.length()-1));
+        if(id.length()==2){
+            id= id+last;
+        }else if(id.length()==1){
+            id=id+last+last;
+        }
+        
+            return id;
+    }
+}
+// A~Z 65~90, a~z 97~122
