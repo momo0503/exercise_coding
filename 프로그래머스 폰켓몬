@@ -1,0 +1,21 @@
+import java.util.*;
+
+class Solution {
+    public int solution(int[] nums) {
+        int answer = 0;
+        int max = nums.length/2;
+        
+        HashSet<Integer> hs = new HashSet<>();
+        
+        for(Integer t : nums){
+            hs.add(t);
+        }
+        
+        if(hs.size()>max){
+            return max;
+        }else{
+            return hs.size();
+        }
+    }
+}
+//Set 인터페이스를 사용하면 중복값을 제거할 수 있다. 
