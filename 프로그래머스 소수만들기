@@ -1,0 +1,35 @@
+class Solution {
+    
+   public static boolean isPrime(int n){
+        
+       for(int z = 2; z <= Math.sqrt(n); z++){
+           if(n%z==0) return false;
+    }
+       return true;
+  }   
+    public int solution(int[] nums) {
+        int answer = 0;
+        
+        
+        //모든 경우의 수를 판별하긴 해야된다. 
+        for(int i=0;i<nums.length;i++){
+            for(int j=i+1;j<nums.length;j++){
+                for(int k=j+1;k<nums.length;k++){
+                     int sum = nums[i]+ nums[j] + nums[k];   
+                    
+                    if(isPrime(sum)){
+                        answer++;
+                    }
+                }
+            }
+        }
+  
+        return answer;
+    }
+      
+}
+
+//소수 판별시 
+//1~n-1까지 전부 나누어 판별하기 
+//1~n-1 까지 짝수 빼고 나누어 판별하기
+//1~ 의 제곱근 까지 나누어 판별하기 
