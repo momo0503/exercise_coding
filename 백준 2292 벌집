@@ -1,0 +1,38 @@
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+    
+        Scanner sc = new Scanner(System.in);
+        
+        int input = sc.nextInt();
+    
+    // 1   
+    // 2~7      6개      거리 1
+    // 8~19     12개     거리 2
+    // 20~37    18개     거리 3
+    // 38~61    24개     거리 4
+
+        
+         int length=1;
+         int sum =7;
+         
+      if(input==1){
+          System.out.println(1);
+      }else{
+          while(true){
+              if(input>sum){ //입력값이 sum(거리마다 정해진 범위 값?) 보다 크면 
+                  length++; //길이를 늘리고
+                  sum = sum+ (length*6);  //sum(거리마다 정해진 범위 값?) 을 증가시킨다. 
+              }else{
+                  System.out.println(length+1);
+                  //sum(거리마다 정해진 범위의 값) 이내에 있다면 거리(length)의 값 +1 , 즉 이동육각형의 개수를 구한 후 출력
+                  break;
+              }
+              
+          }
+          
+      }
+
+    }//main()
+}
