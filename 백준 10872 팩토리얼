@@ -1,0 +1,48 @@
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+           Scanner sc = new Scanner(System.in);
+        
+            int input = sc.nextInt();
+        
+            int factorial =1;
+        
+            for(int i=1;i<=input;i++){
+                factorial = factorial*i;        
+            }
+        
+            System.out.println(factorial);
+        
+    }
+}
+
+
+
+
+========================================================================
+
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+           Scanner sc = new Scanner(System.in);
+        
+           int input = sc.nextInt();
+        
+           int result = factorial(input);
+           System.out.println(result);
+      
+    }//main()
+    
+    //재귀함수 이용
+    public static int factorial(int input){
+        if(input <=1){
+            return 1;
+        } 
+        
+        return input*factorial(input -1);
+        
+    }//factorial()
+    
+}
