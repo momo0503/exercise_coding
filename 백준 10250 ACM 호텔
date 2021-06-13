@@ -1,0 +1,32 @@
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+    
+        Scanner sc = new Scanner(System.in);
+        
+        int testCase = sc.nextInt();
+        
+        
+        
+        // 6   12   4     - > 401
+        
+        for(int i=1;i<=testCase;i++){
+            
+             int H = sc.nextInt();
+             int W = sc.nextInt();
+             int N = sc.nextInt();
+        
+   
+            if(N % H ==0){
+                System.out.println((H*100) +(N/H));
+            }else{
+                System.out.println(((N%H)*100 + ((N/H) + 1)));
+            }
+
+            
+        }//for
+      sc.close();
+           
+    }//main
+}
