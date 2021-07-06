@@ -1,0 +1,41 @@
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        
+  Scanner sc = new Scanner(System.in);
+     int X = sc.nextInt();
+     sc.close();
+        
+     int sum = 0;
+     int countTemp = 0; //몇번쨰 반복인지 ,홀 짝 나눔
+     
+      
+     while(true){
+         countTemp++;
+         sum+=countTemp;
+         
+         if(X<=sum){
+             break;
+         }
+     }   
+
+      int climb = X-(sum-countTemp);  //몇칸 오를지
+      
+      
+   
+       if(countTemp%2==0){
+           
+           int mo = countTemp-climb+1;
+           int ja = climb;
+           
+           System.out.println(ja+"/"+mo);
+           
+       }else{
+           int mo = climb;
+           int ja = countTemp-climb+1;
+           System.out.println(ja+"/"+mo);
+       } 
+        
+    }
+}
