@@ -1,0 +1,61 @@
+package baekj;
+
+import java.util.*;
+
+public class B3009{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        
+        int[][] arr = new int[3][3];
+        
+        String fir = sc.nextLine();
+        String sec = sc.nextLine();
+        String thi = sc.nextLine();
+        
+  
+        
+        StringTokenizer st = new StringTokenizer(fir," ");
+        arr[0][0] = Integer.parseInt(st.nextToken());
+        arr[0][1] = Integer.parseInt(st.nextToken());
+        
+        StringTokenizer st2 = new StringTokenizer(sec," ");
+        arr[1][0] = Integer.parseInt(st2.nextToken());
+        arr[1][1] = Integer.parseInt(st2.nextToken());
+        
+        StringTokenizer st3 = new StringTokenizer(thi," ");
+        arr[2][0] = Integer.parseInt(st3.nextToken());
+        arr[2][1] = Integer.parseInt(st3.nextToken());
+     
+        int x = 0;
+        int y = 0;
+        
+        if(arr[0][0] == arr[1][0]){
+            x = arr[2][0];
+        }
+        
+          if(arr[0][0] == arr[2][0]){
+            x = arr[1][0];
+        }
+        
+          if(arr[1][0] == arr[2][0]){
+            x = arr[0][0];
+        }
+        
+        
+        
+        if(arr[0][1] == arr[1][1]){
+            y = arr[2][1];
+        }
+        
+         if(arr[1][1] == arr[2][1]){
+            y = arr[0][1];
+        }
+        
+         if(arr[0][1] == arr[2][1]){
+            y = arr[1][1];
+        }
+        
+        System.out.println(x+" "+y);
+        
+    }//main
+}
