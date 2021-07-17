@@ -1,0 +1,35 @@
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        
+        int a = 0;
+        int b = 0;
+        int c = 0;
+        
+       while(T >= 10){ 
+        if(T >= 300){
+            T=T-300;
+            a++;    
+        }else if(T >= 60){
+            T=T-60;
+            b++;
+        }else if(T >= 10){
+            T=T-10;
+            c++;
+        }
+       }//while
+        
+        if(T == 0){
+            System.out.print(a+" "+b+" "+c);
+        }else{
+            System.out.print(-1);
+        }
+        
+        
+    }
+}
+
+//T는 초 A,B,C 각각 5분(300초), 1분(60초), 10초
