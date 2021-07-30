@@ -1,0 +1,211 @@
+무한루프를 빠져나오지 못한다. 수정이 필요하다. 다음기회에...
+=====================================================================================================================================================================
+package nadongbin;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class Implement4 {
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		String mapSize = br.readLine();
+		String charD = br.readLine();
+		
+		StringTokenizer st = new StringTokenizer(mapSize," ");
+		
+		int N = Integer.parseInt(st.nextToken());
+		int M = Integer.parseInt(st.nextToken());
+		
+		StringTokenizer st1 = new StringTokenizer(charD," ");
+		
+		int x = Integer.parseInt(st1.nextToken());
+		int y = Integer.parseInt(st1.nextToken());
+		int dir=  Integer.parseInt(st1.nextToken());
+		
+		int[][] arr = new int[N][M];
+		
+		
+		for(int i=0;i<N;i++) {
+			String temp = br.readLine();
+			StringTokenizer st2 = new StringTokenizer(temp," ");
+			
+			
+			for(int j=0;j<M;j++) {
+				arr[i][j]=Integer.parseInt(st2.nextToken());
+			}
+			
+		}
+		
+		//북 동 남 서 , 로 수정 인덱스 맞추기위해
+		int[] dx = {0,1,0,-1};
+		int[] dy = {-1,0,1,0};
+		
+		// 북쪽 0 , 동쪽 1, 남쪽 2, 서쪽 3 , boolean형에서 int 형으로 방문 1, 미방문 0으로 수정
+		int[][] visit = new int[50][50];		
+		visit[N][M] = 1; //방문 1, 미방문 0
+		
+		int count =1;
+		
+		
+		while(true) {
+			
+			if(dir!=3)
+			dir+=dir;
+			else {
+				dir=3;
+			}
+			
+			
+			int nx = x+dx[dir];
+			int ny = y+dy[dir];
+			
+			
+			//가본적없고 육지면 
+			if(arr[nx][ny]==0 && visit[nx][ny]==0) {
+				count++;
+				visit[nx][ny]=1;
+				x=nx;
+				y=ny;
+				continue;
+			}
+			
+			
+			//육네 방향 모두 가본칸이나 바다로 되있는 경우
+			if(visit[x+0][y-1]==1 || visit[x+1][y+0]==1 || visit[x+0][y+1]==1 || visit[x-1][y]==1 ||
+					arr[x+0][y-1]==1 || arr[x+1][y+0]==1 || arr[x+0][y+1]==1 || arr[x-1][y]==1	
+					) {
+				
+				//현재 방향기준 뒤로간 방향
+				int tx =0; int ty=0;
+				
+				if(dir==0) {
+				 tx=x;	ty=y-1;
+				}else if(dir==1) {
+					tx=x-1; ty=y;
+				}else if(dir==2) {
+				tx=x;	ty=y+1;
+				}else {
+					tx=x+1; ty=y;
+				}
+				
+				
+				// 바다다? -> break;  아니면 tx, ty를 x ,y 에 저장
+				if(arr[tx][ty]==1) {
+					break;
+				}else {
+					x=tx; y=ty;
+					count++;
+					continue;
+				}
+								
+		
+			}
+			
+			
+	
+		}//while
+		
+
+		System.out.println(count);
+		
+	}
+
+}
+=====================================================================================================================================================================
+
+동빈나님 코드, 참고하여 수정해야겠다. 로직은 거의 비슷한거 같다.
+import java.util.*;
+
+public class Main {
+
+    public static int n, m, x, y, direction;
+    // 방문한 위치를 저장하기 위한 맵을 생성하여 0으로 초기화
+    public static int[][] d = new int[50][50];
+    // 전체 맵 정보
+    public static int[][] arr = new int [50][50];
+
+    // 북, 동, 남, 서 방향 정의
+    public static int dx[] = {-1, 0, 1, 0};
+    public static int dy[] = {0, 1, 0, -1};
+
+    // 왼쪽으로 회전
+    public static void turn_left() {
+        direction -= 1;
+        if (direction == -1) direction = 3;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // N, M을 공백을 기준으로 구분하여 입력받기
+        n = sc.nextInt();
+        m = sc.nextInt();
+        
+        // 현재 캐릭터의 X 좌표, Y 좌표, 방향을 입력받기
+        x = sc.nextInt();
+        y = sc.nextInt();
+        direction = sc.nextInt();
+        d[x][y] = 1; // 현재 좌표 방문 처리
+
+        // 전체 맵 정보를 입력 받기
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                arr[i][j] = sc.nextInt();
+            }
+        }
+
+        // 시뮬레이션 시작
+        int cnt = 1;
+        int turn_time = 0;
+        while (true) {
+            // 왼쪽으로 회전
+            turn_left();
+            int nx = x + dx[direction];
+            int ny = y + dy[direction];
+            // 회전한 이후 정면에 가보지 않은 칸이 존재하는 경우 이동
+            if (d[nx][ny] == 0 && arr[nx][ny] == 0) {
+                d[nx][ny] = 1;
+                x = nx;
+                y = ny;
+                cnt += 1;
+                turn_time = 0;
+                continue;
+            }
+            // 회전한 이후 정면에 가보지 않은 칸이 없거나 바다인 경우
+            else turn_time += 1;
+            // 네 방향 모두 갈 수 없는 경우
+            if (turn_time == 4) {
+                nx = x - dx[direction];
+                ny = y - dy[direction];
+                // 뒤로 갈 수 있다면 이동하기
+                if (arr[nx][ny] == 0) {
+                    x = nx;
+                    y = ny;
+                }
+                // 뒤가 바다로 막혀있는 경우
+                else break;
+                turn_time = 0;
+            }
+        }
+
+        System.out.println(cnt);
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+ 
