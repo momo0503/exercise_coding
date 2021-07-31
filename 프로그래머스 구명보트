@@ -1,0 +1,24 @@
+import java.util.*;
+
+class Solution {
+    public int solution(int[] people, int limit) {
+        int answer = 0;
+        
+        Arrays.sort(people);
+        int i=0;  int j = people.length-1;
+      
+        while(i<j) {
+            
+            if (people[i] + people[j] <= limit){
+                i++;
+            } 
+            j--;
+        }
+        
+        answer = people.length - i;
+        
+        
+        return answer;
+    }
+}
+//제일 작은 무게와 제일 큰 무게를 비교하고, 큰무게에서 서서히 그다음 큰 무게로 줄여나가며 비교해야한다.
