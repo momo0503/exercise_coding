@@ -1,0 +1,71 @@
+package basic1;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class tict5_3 {
+
+    public static int[][] arr;
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String input = br.readLine();
+        StringTokenizer st = new StringTokenizer(input," ");
+
+        int N = Integer.parseInt(st.nextToken());
+        int M = Integer.parseInt(st.nextToken());
+
+        arr = new int[N][M];
+
+        // NXM배열에 입력
+        for(int i=0;i<N;i++){
+            for(int j=0;j<M;j++){
+                arr[i][j]=Integer.parseInt(br.readLine());
+            }
+        }
+
+        //NXM 배열 테스트 출력
+//        for(int i=0;i<N;i++){
+//            for(int j=0;j<M;j++){
+//                System.out.print(arr[i][j]);
+//            }
+//            System.out.println();
+//        }
+
+
+        //모든 노드에 대해서 dfs 를 수행한다?
+        int count = 0;
+        for(int i=0;i<N;i++){
+            for(int j=0;j<M;j++){
+                if(dfs(i,j,N,M)) count++;
+            }
+        }
+
+        System.out.println(count);
+    }//main()
+
+
+    public static boolean dfs(int x, int y, int n, int m){
+
+        if(x < 0 || x >= n ||y<0 || y>=m) return false;
+
+
+        //방문하지 않은곳 == 0
+        if(arr[x][y]==0){
+            arr[x][y]=1;
+
+            // 상, 하, 좌, 우의 위치들도 모두 재귀적으로 호출
+            dfs(x-1, y,n,m);
+            dfs(x, y - 1,n,m);
+            dfs(x + 1, y,n,m);
+            dfs(x, y + 1,n,m);
+            return true;
+        }
+
+        return false;
+    }//dfs()
+
+}//class
