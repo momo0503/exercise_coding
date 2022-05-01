@@ -1,0 +1,50 @@
+
+2022-05-01
+
+오랜만의 알고리즘
+이 문제를 풀며 알고리즘은 매일 해야한다고 느낌 ( 사실 항상 느낌) 
+a의 b승값을 구해 그것의 마지막 자리 수를 따로따로 구했었다.
+하지만 다른분의 이 코드가 더 효율적인거 같다.
+
+이상.
+
+
+===================================================
+import java.util.*;
+import java.io.*;
+
+public class Main{
+    public static void main(String[] args) throws IOException{
+
+
+      	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		
+		int num = Integer.parseInt(br.readLine());
+		
+		for(int i=0; i<num; i++) {
+			StringTokenizer st = new StringTokenizer(br.readLine()," ");
+			int result = 1;
+			int a = Integer.parseInt(st.nextToken());
+			int b = Integer.parseInt(st.nextToken());
+			for(int j=0; j<b; j++) {
+				result *= a;
+				if(result>=10) {
+					result %= 10;
+				}
+				if(result == 0) {
+					result = 10;
+					break;
+				}
+			}
+			bw.write(String.valueOf(result)+"\n");
+		}
+		bw.flush();
+		bw.close();
+        
+        
+    }    
+}
+
+
+
