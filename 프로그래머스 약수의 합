@@ -1,0 +1,13 @@
+class Solution {
+    public int solution(int n) {
+        int answer = n;
+        
+        for(int i=1 ;i<=n/2;i++){   // 어떤 수의 약수는 그 수의 절반값보다 클 수 없다.
+            if(n%i == 0){   //입력값 n을 i로 나눌때 나머지 0이면 i는 약수다.  
+                answer += i; 
+            }
+        }
+        
+        return answer;
+    }
+}
