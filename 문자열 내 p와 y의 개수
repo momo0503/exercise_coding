@@ -1,0 +1,32 @@
+class Solution {
+    boolean solution(String s) {
+        boolean answer = true;
+
+        String s1 = s.toUpperCase();
+        
+        int countP = 0;
+        int countY = 0; 
+        
+        for(int i=0;i<s1.length();i++){
+            if(s1.charAt(i) == 'P') countP++;
+            else if(s1.charAt(i) == 'Y') countY++;
+        }
+        
+        System.out.println(" s1 : " +s1);
+        System.out.println(" countP : " +countP);
+        System.out.println(" countY : " +countY);
+        
+        
+        if(countP == 0 && countY == 0){
+            answer = true;
+        }else{
+            if(countP == countY){
+                answer = true;
+            }else{
+                answer = false;
+            }
+        }
+
+        return answer;
+    }
+}
