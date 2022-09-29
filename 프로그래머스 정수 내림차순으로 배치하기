@@ -1,0 +1,32 @@
+import java.util.*; 
+
+class Solution {
+    public long solution(long n) {
+        long answer = 0;
+        String str = String.valueOf(n);
+        
+        List list = new ArrayList();        
+        
+        for(int i=0;i<str.length();i++){
+           list.add(str.charAt(i));
+        }
+        
+        /* 출력 */
+        for(int i=0;i<list.size();i++){
+            System.out.print(list.get(i)+" ");
+        }
+        
+        Collections.sort(list);
+        
+        String temp = "";
+        for(int i=list.size()-1;i>=0;i--){
+            temp += list.get(i);
+        }
+        
+        System.out.print("temp : "+ temp);
+        
+        answer = Long.parseLong(temp);
+        
+        return answer;
+    }
+}
