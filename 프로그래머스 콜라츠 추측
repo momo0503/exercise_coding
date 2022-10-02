@@ -1,0 +1,28 @@
+class Solution {
+    public int solution(int num) {
+        long answer = num;
+        
+        if(num == 1) return 0;
+        
+        int sum = 0;
+        
+        for(int i=1;i<=501;i++){
+            if(answer%2 ==0){
+                answer =answer/2;
+            }else{
+                answer = (answer*3) + 1;
+            }
+            if(answer == 1){
+                sum++;
+                break; 
+            }   
+            
+            sum++;
+            if(sum == 501){
+                return -1;
+            }
+        }
+        System.out.print("sum :"+ sum+" ");
+        return sum;
+    }
+}
