@@ -1,0 +1,35 @@
+import java.util.*;
+
+class Solution {
+    public long solution(int n, int[] works) {
+        long answer = 0;
+        Arrays.sort(works); 
+        int sum =0;
+        
+        for(int j=0;j<works.length-1;j++){
+            sum+=works[j];
+        }
+        
+        if(sum <=n){
+            return 0;
+        }else{
+            for(int i=n;i>0;i--){
+             
+                works[works.length-1] = works[works.length-1]-1;
+                Arrays.sort(works);
+                n--;
+           }
+        }
+    
+        
+        
+        
+        
+        
+        for(int i=0;i<works.length;i++){
+            answer += works[i] * works[i];
+        }
+        
+        return answer;
+    }
+}
