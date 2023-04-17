@@ -1,0 +1,33 @@
+class Solution {
+    public int solution(int n) {
+        int answer = 0;
+        int sumOne = 0;
+        
+
+        String binaryN = Integer.toBinaryString(n);
+        
+        for(int i=0;i<binaryN.length();i++){
+            if(binaryN.charAt(i) == '1') sumOne++;
+        }
+        
+               
+        
+       for(int k= n+1;k<1000000;k++){
+                   
+        String binaryNextNumber = Integer.toBinaryString(k);
+        int nextSumOne = 0;    
+
+            for(int i=0;i<binaryNextNumber.length();i++){
+                if(binaryNextNumber.charAt(i) == '1') nextSumOne++;
+            }
+            
+
+            if(sumOne == nextSumOne ){
+                answer = Integer.parseInt(binaryNextNumber,2); break;
+            }      
+        }
+
+        
+        return answer;
+    }
+}
