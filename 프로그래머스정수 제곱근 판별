@@ -1,0 +1,15 @@
+import java.util.*;
+
+class Solution {
+    public long solution(long n) {
+        long answer = -1;
+        
+        Double sq = Math.sqrt(n);
+        if(sq == sq.intValue()){
+            
+            answer =(long) Math.pow(sq+1,2);
+        }
+        
+        return answer;
+    }
+}
